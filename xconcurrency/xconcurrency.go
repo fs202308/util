@@ -2,8 +2,9 @@ package xconcurrency
 
 import (
 	"context"
-	"github.com/shomali11/parallelizer"
 	"time"
+
+	"github.com/bsync-tech/util/xparallelizer"
 )
 
 // Parallelize parallelizes the function calls
@@ -21,10 +22,10 @@ func ParallelizeTimeout(timeout time.Duration, functions ...func()) error {
 
 // ParallelizeContext parallelizes the function calls with a context
 func ParallelizeContext(ctx context.Context, functions ...func()) error {
-	group := parallelizer.NewGroup()
+	group := xparallelizer.NewGroup()
 	for _, function := range functions {
 		group.Add(function)
 	}
 
-	return group.Wait(parallelizer.WithContext(ctx))
+	return group.Wait(xparallelizer.WithContext(ctx))
 }

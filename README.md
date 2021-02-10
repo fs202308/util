@@ -1,11 +1,6 @@
-# util [![Build Status](https://travis-ci.com/shomali11/util.svg?branch=master)](https://travis-ci.com/shomali11/util) [![Go Report Card](https://goreportcard.com/badge/github.com/shomali11/util)](https://goreportcard.com/report/github.com/shomali11/util) [![GoDoc](https://godoc.org/github.com/shomali11/util?status.svg)](https://godoc.org/github.com/shomali11/util) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# util [![Build Status](https://travis-ci.com/bsync-tech/util.svg?branch=master)](https://travis-ci.com/bsync-tech/util) [![Go Report Card](https://goreportcard.com/badge/github.com/bsync-tech/util)](https://goreportcard.com/report/github.com/bsync-tech/util) [![GoDoc](https://godoc.org/github.com/bsync-tech/util?status.svg)](https://godoc.org/github.com/bsync-tech/util) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A group of generic useful utility functions
-
-## Dependencies
-
-* `parallelizer` [github.com/shomali11/parallelizer](https://github.com/shomali11/parallelizer)
-
 
 # Examples
 
@@ -15,7 +10,7 @@ A group of generic useful utility functions
 package main
 
 import (
-	"github.com/shomali11/util/xconcurrency"
+	"github.com/bsync-tech/util/xconcurrency"
 	"time"
 	"fmt"
 )
@@ -26,15 +21,15 @@ func main() {
                 fmt.Printf("%c ", char)
             }
     }
-    
+
     func2 := func() {
             for number := 1; number < 4; number++ {
                 fmt.Printf("%d ", number)
             }
     }
-    
+
     xconcurrency.Parallelize(func1, func2)  // a 1 b 2 c 3
-    
+
     xconcurrency.ParallelizeTimeout(time.Minute, func1, func2)  // a 1 b 2 c 3
 }
 ```
@@ -45,7 +40,7 @@ func main() {
 package main
 
 import (
-	"github.com/shomali11/util/xhashes"
+	"github.com/bsync-tech/util/xhashes"
 	"fmt"
 )
 
@@ -67,7 +62,7 @@ func main() {
 package main
 
 import (
-	"github.com/shomali11/util/xcompressions"
+	"github.com/bsync-tech/util/xcompressions"
 	"fmt"
 )
 
@@ -82,7 +77,7 @@ func main() {
 package main
 
 import (
-	"github.com/shomali11/util/xencodings"
+	"github.com/bsync-tech/util/xencodings"
 	"fmt"
 )
 
@@ -98,7 +93,7 @@ func main() {
 package main
 
 import (
-	"github.com/shomali11/util/xstrings"
+	"github.com/bsync-tech/util/xstrings"
 	"fmt"
 )
 
@@ -158,7 +153,7 @@ func main() {
 package main
 
 import (
-	"github.com/shomali11/util/xconditions"
+	"github.com/bsync-tech/util/xconditions"
 	"fmt"
 )
 
@@ -194,7 +189,7 @@ func main() {
 package main
 
 import (
-	"github.com/shomali11/util/xerrors"
+	"github.com/bsync-tech/util/xerrors"
 	"fmt"
 )
 
@@ -210,7 +205,7 @@ func main() {
 package main
 
 import (
-	"github.com/shomali11/util/xmanipulations"
+	"github.com/bsync-tech/util/xmanipulations"
 	"math/rand"
 	"time"
 	"fmt"
@@ -234,22 +229,22 @@ Return a pretty JSON representation of any interface
 package main
 
 import (
-	"github.com/shomali11/util/xconversions"
+	"github.com/bsync-tech/util/xconversions"
 	"fmt"
 )
 
 func main() {
-    x := map[string]interface{}{"number": 1, "string": "cool", "bool": true, "float": 1.5}    
+    x := map[string]interface{}{"number": 1, "string": "cool", "bool": true, "float": 1.5}
     fmt.Println(xconversions.PrettyJson(x))
 }
 ```
 
 ```json
 {
-	"bool": true,
-	"float": 1.5,
-	"number": 1,
-	"string": "cool"
+  "bool": true,
+  "float": 1.5,
+  "number": 1,
+  "string": "cool"
 }
 ```
 
@@ -259,12 +254,12 @@ Convert any interface to a String
 package main
 
 import (
-	"github.com/shomali11/util/xconversions"
+	"github.com/bsync-tech/util/xconversions"
 	"fmt"
 )
 
 func main() {
-    x := map[string]interface{}{"number": 1, "string": "cool", "bool": true, "float": 1.5}    
+    x := map[string]interface{}{"number": 1, "string": "cool", "bool": true, "float": 1.5}
     fmt.Println(xconversions.Stringify(x))
 }
 ```
@@ -279,7 +274,7 @@ Convert any string back to its original struct
 package main
 
 import (
-	"github.com/shomali11/util/xconversions"
+	"github.com/bsync-tech/util/xconversions"
 	"fmt"
 )
 

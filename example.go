@@ -5,15 +5,15 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/shomali11/util/xcompressions"
-	"github.com/shomali11/util/xconcurrency"
-	"github.com/shomali11/util/xconditions"
-	"github.com/shomali11/util/xconversions"
-	"github.com/shomali11/util/xencodings"
-	"github.com/shomali11/util/xerrors"
-	"github.com/shomali11/util/xhashes"
-	"github.com/shomali11/util/xmanipulations"
-	"github.com/shomali11/util/xstrings"
+	"github.com/bsync-tech/util/xcompressions"
+	"github.com/bsync-tech/util/xconcurrency"
+	"github.com/bsync-tech/util/xconditions"
+	"github.com/bsync-tech/util/xconversions"
+	"github.com/bsync-tech/util/xencodings"
+	"github.com/bsync-tech/util/xerrors"
+	"github.com/bsync-tech/util/xhashes"
+	"github.com/bsync-tech/util/xmanipulations"
+	"github.com/bsync-tech/util/xstrings"
 )
 
 func main() {

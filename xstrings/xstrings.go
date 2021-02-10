@@ -2,7 +2,7 @@ package xstrings
 
 import (
 	"bytes"
-	"github.com/shomali11/util/xrunes"
+	"github.com/bsync-tech/util/xrunes"
 	"strings"
 )
 
