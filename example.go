@@ -5,6 +5,7 @@ import (
 	"math/rand"
 	"time"
 
+	"github.com/bsync-tech/util/xalgorithms/bf"
 	"github.com/bsync-tech/util/xcompressions"
 	"github.com/bsync-tech/util/xconcurrency"
 	"github.com/bsync-tech/util/xconditions"
@@ -26,6 +27,7 @@ func main() {
 	Manipulations()
 	Compressions()
 	Concurrency()
+	BF()
 }
 
 func Conversions() {
@@ -162,4 +164,14 @@ func Concurrency() {
 	}
 
 	xconcurrency.Parallelize(func1, func2)
+}
+
+func BF() {
+	key1 := []byte{0x00, 0x01, 0x02, 0x03}
+	key2 := []byte{0x00, 0x01, 0x02, 0x04}
+	s := "hello this is a simple world"
+	bf.WithKey(key1)
+	fmt.Println(string(bf.EncryptData([]byte(s))))
+	bf.WithKey(key2)
+	fmt.Println(string(bf.EncryptData([]byte(s))))
 }
