@@ -2,8 +2,9 @@ package xstrings
 
 import (
 	"bytes"
-	"github.com/bsync-tech/util/xrunes"
 	"strings"
+
+	"github.com/bsync-tech/util/xrunes"
 )
 
 const (
@@ -118,4 +119,22 @@ func reverse(runes []rune, length int) {
 	for i, j := 0, length-1; i < length/2; i, j = i+1, j-1 {
 		runes[i], runes[j] = runes[j], runes[i]
 	}
+}
+
+func StringsUniq(l []string) []string {
+	m := make(map[string]interface{})
+	if len(l) <= 0 {
+		return []string{}
+	}
+	for _, v := range l {
+		m[v] = "true"
+	}
+	var datas []string
+	for k := range m {
+		if k == "" {
+			continue
+		}
+		datas = append(datas, k)
+	}
+	return datas
 }
