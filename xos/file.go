@@ -13,7 +13,7 @@ func ListSubFiles(path string, mode int) ([]string, error) {
 	var r []string
 	d, err := ioutil.ReadDir(path)
 	if err != nil {
-		return nil, err
+		return r, err
 	}
 	for _, d := range d {
 		if mode == MODE_DIR {
