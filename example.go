@@ -14,6 +14,10 @@ import (
 	"github.com/bsync-tech/util/xerrors"
 	"github.com/bsync-tech/util/xhashes"
 	"github.com/bsync-tech/util/xmanipulations"
+	"github.com/bsync-tech/util/xmetrics/cpu"
+	"github.com/bsync-tech/util/xmetrics/disk"
+	"github.com/bsync-tech/util/xmetrics/memory"
+	"github.com/bsync-tech/util/xos"
 	"github.com/bsync-tech/util/xstrings"
 )
 
@@ -28,6 +32,10 @@ func main() {
 	Compressions()
 	Concurrency()
 	BF()
+	Cpu()
+	Memory()
+	Disk()
+	ListSubFiles()
 }
 
 func Conversions() {
@@ -164,6 +172,55 @@ func Concurrency() {
 	}
 
 	xconcurrency.Parallelize(func1, func2)
+}
+
+func Cpu() {
+	before, err := cpu.Get()
+	if err != nil {
+		fmt.Printf("%s\n", err)
+		return
+	}
+	time.Sleep(time.Duration(1) * time.Second)
+	after, err := cpu.Get()
+	if err != nil {
+		fmt.Printf("%s\n", err)
+		return
+	}
+	total := float64(after.Total - before.Total)
+	fmt.Printf("cpu user: %f %%\n", float64(after.User-before.User)/total*100)
+	fmt.Printf("cpu system: %f %%\n", float64(after.System-before.System)/total*100)
+	fmt.Printf("cpu idle: %f %%\n", float64(after.Idle-before.Idle)/total*100)
+}
+
+func Memory() {
+	memory, err := memory.Get()
+	if err != nil {
+		fmt.Printf("%s\n", err)
+		return
+	}
+	fmt.Printf("memory total: %d mbytes\n", memory.Total/1024/1024)
+	fmt.Printf("memory used: %d mbytes\n", memory.Used/1024/1024)
+	fmt.Printf("memory cached: %d mbytes\n", memory.Cached/1024/1024)
+	fmt.Printf("memory free: %d mbytes\n", memory.Free/1024/1024)
+}
+
+func Disk() {
+	before, err := disk.Get()
+	if err != nil {
+		fmt.Printf("%s\n", err)
+	}
+	time.Sleep(time.Duration(1) * time.Second)
+	after, err := disk.Get()
+	if err != nil {
+		fmt.Printf("%s\n", err)
+	}
+	for i := 0; i < len(after); i++ {
+		fmt.Printf("disk util: %s %f\n", after[i].DeviceName, float64(after[i].TimeSpentInIO-before[i].TimeSpentInIO))
+	}
+}
+
+func ListSubFiles() {
+	fmt.Println(xos.ListSubFiles(".", xos.MODE_DIR))
 }
 
 func BF() {
