@@ -2,6 +2,8 @@ package xos
 
 import (
 	"io/ioutil"
+	"os"
+	"path/filepath"
 )
 
 const (
@@ -28,4 +30,16 @@ func ListSubFiles(path string, mode int) ([]string, error) {
 		}
 	}
 	return r, nil
+}
+
+func WalkDir(path string) (files []string, err error) {
+	files = make([]string, 0, 30)
+	err = filepath.Walk(path, func(filename string, fi os.FileInfo, err error) error {
+		if fi.IsDir() { // 忽略目录
+			return nil
+		}
+		files = append(files, filename)
+		return nil
+	})
+	return files, err
 }
