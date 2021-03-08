@@ -32,7 +32,7 @@ func ListSubFiles(path string, mode int) ([]string, error) {
 	return r, nil
 }
 
-func WalkDir(path string) (files []string, err error) {
+func ListSubFilesRecur(path string) (files []string, err error) {
 	files = make([]string, 0, 30)
 	err = filepath.Walk(path, func(filename string, fi os.FileInfo, err error) error {
 		if fi.IsDir() { // 忽略目录
