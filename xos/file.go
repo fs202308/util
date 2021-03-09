@@ -40,12 +40,12 @@ func ListSubFilesRecur(path string, suffix string, mode int) (files []string, er
 			return nil
 		}
 		if mode == MODE_FILE {
-			if !fi.IsDir() && strings.HasSuffix(strings.ToUpper(fi.Name()), suffix) {
+			if !fi.IsDir() && strings.HasSuffix(fi.Name(), suffix) {
 				files = append(files, filename)
 			}
 			return nil
 		} else if mode == MODE_DIR {
-			if fi.IsDir() && strings.HasSuffix(strings.ToUpper(fi.Name()), suffix) {
+			if fi.IsDir() && strings.HasSuffix(fi.Name(), suffix) {
 				files = append(files, filename)
 			}
 		}
