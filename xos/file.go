@@ -36,6 +36,9 @@ func ListSubFiles(path string, mode int) ([]string, error) {
 func ListSubFilesRecur(path string, suffix string, mode int) (files []string, err error) {
 	files = make([]string, 0, 30)
 	err = filepath.Walk(path, func(filename string, fi os.FileInfo, err error) error {
+		if err != nil {
+			return nil
+		}
 		if mode == MODE_FILE {
 			if !fi.IsDir() && strings.HasSuffix(strings.ToUpper(fi.Name()), suffix) {
 				files = append(files, filename)
