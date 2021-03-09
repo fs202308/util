@@ -32,13 +32,22 @@ func ListSubFiles(path string, mode int) ([]string, error) {
 	return r, nil
 }
 
-func ListSubFilesRecur(path string) (files []string, err error) {
+func ListSubFilesRecur(path string, mode int) (files []string, err error) {
 	files = make([]string, 0, 30)
 	err = filepath.Walk(path, func(filename string, fi os.FileInfo, err error) error {
-		if fi.IsDir() { // 忽略目录
-			return nil
+		if err != nil {
+			return err
 		}
-		files = append(files, filename)
+		if mode == MODE_FILE {
+			if !fi.IsDir() {
+				files = append(files, filename)
+			}
+			return nil
+		} else if mode == MODE_DIR {
+			if fi.IsDir() {
+				files = append(files, filename)
+			}
+		}
 		return nil
 	})
 	return files, err
