@@ -34,7 +34,6 @@ func Cpu() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	fmt.Println(string(d))
 	return string(d), nil
 }
 
@@ -57,7 +56,6 @@ func Memory() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	fmt.Println(string(d))
 	return string(d), nil
 }
 
@@ -87,7 +85,6 @@ func Disk() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	fmt.Println(string(d))
 	return string(d), nil
 }
 
@@ -107,8 +104,8 @@ func Network() (string, error) {
 	for i := 0; i < len(after); i++ {
 		info := map[string]interface{}{
 			"DeviceName": after[i].Name,
-			"Read":       fmt.Sprintf("%.2fBytes", 100*float64(after[i].RxBytes-before[i].RxBytes)/float64(elapse.Milliseconds())),
-			"Write":      fmt.Sprintf("%.2fBytes", 100*float64(after[i].TxBytes-before[i].TxBytes)/float64(elapse.Milliseconds())),
+			"Read":       fmt.Sprintf("%.2fKB", float64(after[i].RxBytes-before[i].RxBytes)/(float64(elapse.Milliseconds())*1024)),
+			"Write":      fmt.Sprintf("%.2fKB", float64(after[i].TxBytes-before[i].TxBytes)/(float64(elapse.Milliseconds())*1024)),
 		}
 		ds = append(ds, &info)
 	}
@@ -117,6 +114,5 @@ func Network() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	fmt.Println(string(d))
 	return string(d), nil
 }
