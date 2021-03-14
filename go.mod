@@ -3,6 +3,7 @@ module github.com/bsync-tech/util
 go 1.14
 
 require (
+	github.com/Anlandme/sysinfo v0.0.0-20180503014557-36daa56461f1
 	github.com/coreos/etcd v3.3.25+incompatible // indirect
 	github.com/coreos/go-semver v0.3.0 // indirect
 	github.com/coreos/go-systemd v0.0.0-20191104093116-d3cd4ed1dbcf // indirect
