@@ -18,6 +18,7 @@ import (
 	"github.com/bsync-tech/util/xmetrics/cpu"
 	"github.com/bsync-tech/util/xmetrics/disk"
 	"github.com/bsync-tech/util/xmetrics/memory"
+	network "github.com/bsync-tech/util/xmetrics/net"
 	"github.com/bsync-tech/util/xos"
 	"github.com/bsync-tech/util/xstrings"
 )
@@ -36,6 +37,7 @@ func main() {
 	Cpu()
 	Memory()
 	Disk()
+	Network()
 	ListSubFiles()
 }
 
@@ -225,7 +227,7 @@ func Memory() (string, error) {
 	return string(d), nil
 }
 
-func Disk() (string, error){
+func Disk() (string, error) {
 	before, err := disk.Get()
 	begin := time.Now()
 	if err != nil {
@@ -243,6 +245,36 @@ func Disk() (string, error){
 			"DeviceName": after[i].DeviceName,
 			"ReadUtil":   fmt.Sprintf("%.2f%%", 100*float64(after[i].TimeSpentReading-before[i].TimeSpentReading)/float64(elapse.Milliseconds())),
 			"WriteUtil":  fmt.Sprintf("%.2f%%", 100*float64(after[i].TimeSpentWriting-before[i].TimeSpentWriting)/float64(elapse.Milliseconds())),
+		}
+		ds = append(ds, &info)
+	}
+
+	d, err := json.Marshal(&ds)
+	if err != nil {
+		return "", err
+	}
+	fmt.Println(string(d))
+	return string(d), nil
+}
+
+func Network() (string, error) {
+	before, err := network.Get()
+	begin := time.Now()
+	if err != nil {
+		return "", err
+	}
+	time.Sleep(time.Duration(1) * time.Second)
+	after, err := network.Get()
+	elapse := time.Since(begin)
+	if err != nil {
+		return "", err
+	}
+	ds := make([]*map[string]interface{}, len(after))
+	for i := 0; i < len(after); i++ {
+		info := map[string]interface{}{
+			"DeviceName": after[i].Name,
+			"Read":       fmt.Sprintf("%.2fBytes", 100*float64(after[i].RxBytes-before[i].RxBytes)/float64(elapse.Milliseconds())),
+			"Write":      fmt.Sprintf("%.2fBytes", 100*float64(after[i].TxBytes-before[i].TxBytes)/float64(elapse.Milliseconds())),
 		}
 		ds = append(ds, &info)
 	}
