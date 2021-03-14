@@ -3,7 +3,7 @@
 package disk
 
 func Get() ([]Stats, error) {
-	return []Status{}, nil
+	return []Stats{}, nil
 }
 
 // Stats represents disk I/O statistics for linux.
