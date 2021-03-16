@@ -16,6 +16,7 @@ require (
 	github.com/mackerelio/mackerel-agent v0.71.1 // indirect
 	github.com/mayur-tolexo/j2s v1.0.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/shirou/gopsutil v2.20.9+incompatible
 	github.com/stretchr/testify v1.6.1
 	go.etcd.io/etcd v3.3.25+incompatible
 	go.uber.org/zap v1.16.0 // indirect
