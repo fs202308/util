@@ -33,3 +33,13 @@ func FirstNonNil(values ...interface{}) interface{} {
 	}
 	return nil
 }
+
+// If a channel is closed
+func ChanClosed(ch <-chan bool) bool {
+	open := true
+	select {
+	case _, open = <-ch:
+	default:
+	}
+	return !open
+}
