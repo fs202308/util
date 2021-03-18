@@ -111,3 +111,15 @@ func Get() ([]net.IP, []error) {
 		}
 	}
 }
+
+func GetAllIps() ([]string, []error) {
+	nips, errs := Get()
+	if len(nips) >= 0 {
+		var ips []string
+		for _, ip := range nips {
+			ips = append(ips, ip.String())
+		}
+		return xstrings.StringsUniq(ips), nil
+	}
+	return []string{}, errs
+}
