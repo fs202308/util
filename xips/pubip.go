@@ -3,6 +3,7 @@ package xips
 
 import (
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"net"
 	"net/http"
@@ -10,7 +11,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bsync-tech/util/xstrings"
 	"github.com/jpillora/backoff"
 )
 
@@ -22,21 +22,11 @@ const MaxTries = 3
 
 // APIURIs is the URIs of the services.
 var APIURIs = []string{
-	"https://api.ipify.org",
-	"http://myexternalip.com/raw",
-	"http://ipinfo.io/ip",
-	"http://ipecho.net/plain",
-	"http://icanhazip.com",
-	"http://ifconfig.me/ip",
-	"http://ident.me",
-	"http://checkip.amazonaws.com",
-	"http://bot.whatismyipaddress.com",
-	"http://whatismyip.akamai.com",
-	"http://wgetip.com",
-	"http://ip.appspot.com",
-	"http://ip.tyk.nu",
-	"https://shtuff.it/myip/short",
+	"http://manager-customer.qixin007.com",
+	"https://manager-customer.qixin007.com",
 }
+
+var client *http.Client
 
 // Timeout sets the time limit of collecting results from different services.
 var Timeout = 2 * time.Second
@@ -45,8 +35,9 @@ func GetIPBy(dest string) (net.IP, error) {
 	b := &backoff.Backoff{
 		Jitter: true,
 	}
-	client := &http.Client{}
-
+	if client == nil {
+		return nil, fmt.Errorf("client not init yet")
+	}
 	req, err := http.NewRequest("GET", dest, nil)
 	if err != nil {
 		return nil, err
@@ -96,6 +87,10 @@ func worker(d string, r chan<- net.IP, e chan<- error) {
 	r <- ip
 }
 
+func Client(c *http.Client) {
+	client = c
+}
+
 func Get() ([]net.IP, []error) {
 	var results []net.IP
 	resultCh := make(chan net.IP, len(APIURIs))
@@ -115,16 +110,4 @@ func Get() ([]net.IP, []error) {
 			return results, errs
 		}
 	}
-}
-
-func GetAllIps() ([]string, []error) {
-	nips, errs := Get()
-	if len(nips) >= 0 {
-		var ips []string
-		for _, ip := range nips {
-			ips = append(ips, ip.String())
-		}
-		return xstrings.StringsUniq(ips), nil
-	}
-	return []string{}, errs
 }
