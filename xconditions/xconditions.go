@@ -36,6 +36,9 @@ func FirstNonNil(values ...interface{}) interface{} {
 
 // If a channel is closed
 func ChanClosed(ch chan struct{}) bool {
+	if ch == nil {
+		return true
+	}
 	open := true
 	select {
 	case _, open = <-ch:
