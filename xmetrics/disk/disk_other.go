@@ -12,5 +12,5 @@ func Iostat() data {
 }
 
 func Get() (data, error) {
-	return Iostat()
+	return Iostat(), nil
 }
