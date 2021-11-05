@@ -1,3 +1,4 @@
+//go:build !linux && !darwin
 // +build !linux,!darwin
 
 package cpu
@@ -9,7 +10,7 @@ import (
 
 // Get cpu statistics
 func Get() (*Stats, error) {
-	return nil, fmt.Errorf("cpu statistics not implemented for: %s", runtime.GOOS)
+	return nil, nil
 }
 
 // Stats represents cpu statistics

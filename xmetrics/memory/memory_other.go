@@ -1,3 +1,4 @@
+//go:build !linux && !darwin && !windows && !freebsd
 // +build !linux,!darwin,!windows,!freebsd
 
 package memory
@@ -9,7 +10,7 @@ import (
 
 // Get memory statistics
 func Get() (*Stats, error) {
-	return nil, fmt.Errorf("memory statistics not implemented for: %s", runtime.GOOS)
+	return nil, nil
 }
 
 // Stats represents memory statistics
