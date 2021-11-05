@@ -10,3 +10,7 @@ func Iostat() data {
 
 	return iostat_info
 }
+
+func Get() ([]Stats, error) {
+	return Iostat()
+}
