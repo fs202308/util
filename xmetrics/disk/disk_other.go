@@ -3,8 +3,10 @@
 
 package disk
 
-type disks map[string]map[string]string
+type data map[string]map[string]string
 
-func Iostat() disks {
-	return disks
+func Iostat() data {
+	iostat_info := make(data)
+
+	return iostat_info
 }

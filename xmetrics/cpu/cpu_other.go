@@ -3,11 +3,6 @@
 
 package cpu
 
-import (
-	"fmt"
-	"runtime"
-)
-
 // Get cpu statistics
 func Get() (*Stats, error) {
 	return nil, nil
