@@ -11,6 +11,6 @@ func Iostat() data {
 	return iostat_info
 }
 
-func Get() ([]Stats, error) {
+func Get() (data, error) {
 	return Iostat()
 }
