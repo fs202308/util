@@ -1,4 +1,4 @@
-# util [![Build Status](https://travis-ci.com/bsync-tech/util.svg?branch=master)](https://travis-ci.com/bsync-tech/util) [![Go Report Card](https://goreportcard.com/badge/github.com/bsync-tech/util)](https://goreportcard.com/report/github.com/bsync-tech/util) [![GoDoc](https://godoc.org/github.com/bsync-tech/util?status.svg)](https://godoc.org/github.com/bsync-tech/util) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# util [![Build Status](https://travis-ci.com/fs202308/util.svg?branch=master)](https://travis-ci.com/fs202308/util) [![Go Report Card](https://goreportcard.com/badge/github.com/fs202308/util)](https://goreportcard.com/report/github.com/fs202308/util) [![GoDoc](https://godoc.org/github.com/fs202308/util?status.svg)](https://godoc.org/github.com/fs202308/util) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A group of generic useful utility functions
 
@@ -10,7 +10,7 @@ A group of generic useful utility functions
 package main
 
 import (
-	"github.com/bsync-tech/util/xconcurrency"
+	"github.com/fs202308/util/xconcurrency"
 	"time"
 	"fmt"
 )
@@ -40,7 +40,7 @@ func main() {
 package main
 
 import (
-	"github.com/bsync-tech/util/xhashes"
+	"github.com/fs202308/util/xhashes"
 	"fmt"
 )
 
@@ -62,7 +62,7 @@ func main() {
 package main
 
 import (
-	"github.com/bsync-tech/util/xcompressions"
+	"github.com/fs202308/util/xcompressions"
 	"fmt"
 )
 
@@ -77,7 +77,7 @@ func main() {
 package main
 
 import (
-	"github.com/bsync-tech/util/xencodings"
+	"github.com/fs202308/util/xencodings"
 	"fmt"
 )
 
@@ -93,7 +93,7 @@ func main() {
 package main
 
 import (
-	"github.com/bsync-tech/util/xstrings"
+	"github.com/fs202308/util/xstrings"
 	"fmt"
 )
 
@@ -153,7 +153,7 @@ func main() {
 package main
 
 import (
-	"github.com/bsync-tech/util/xconditions"
+	"github.com/fs202308/util/xconditions"
 	"fmt"
 )
 
@@ -189,7 +189,7 @@ func main() {
 package main
 
 import (
-	"github.com/bsync-tech/util/xerrors"
+	"github.com/fs202308/util/xerrors"
 	"fmt"
 )
 
@@ -205,7 +205,7 @@ func main() {
 package main
 
 import (
-	"github.com/bsync-tech/util/xmanipulations"
+	"github.com/fs202308/util/xmanipulations"
 	"math/rand"
 	"time"
 	"fmt"
@@ -229,7 +229,7 @@ Return a pretty JSON representation of any interface
 package main
 
 import (
-	"github.com/bsync-tech/util/xconversions"
+	"github.com/fs202308/util/xconversions"
 	"fmt"
 )
 
@@ -254,7 +254,7 @@ Convert any interface to a String
 package main
 
 import (
-	"github.com/bsync-tech/util/xconversions"
+	"github.com/fs202308/util/xconversions"
 	"fmt"
 )
 
@@ -274,7 +274,7 @@ Convert any string back to its original struct
 package main
 
 import (
-	"github.com/bsync-tech/util/xconversions"
+	"github.com/fs202308/util/xconversions"
 	"fmt"
 )
 

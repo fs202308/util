@@ -10,7 +10,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	"github.com/bsync-tech/util/xstrings"
+
+	"github.com/fs202308/util/xstrings"
 	"github.com/jpillora/backoff"
 )
 

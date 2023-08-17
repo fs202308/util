@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/bsync-tech/util/xparallelizer"
+	"github.com/fs202308/util/xparallelizer"
 )
 
 // Parallelize parallelizes the function calls

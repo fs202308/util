@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 
-	"github.com/bsync-tech/util/xmetrics/cpu"
-	"github.com/bsync-tech/util/xmetrics/disk"
-	"github.com/bsync-tech/util/xmetrics/memory"
-	network "github.com/bsync-tech/util/xmetrics/net"
+	"github.com/fs202308/util/xmetrics/cpu"
+	"github.com/fs202308/util/xmetrics/disk"
+	"github.com/fs202308/util/xmetrics/memory"
+	network "github.com/fs202308/util/xmetrics/net"
 )
 
 func main() {

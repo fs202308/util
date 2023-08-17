@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"strings"
 
-	"github.com/bsync-tech/util/xrunes"
+	"github.com/fs202308/util/xrunes"
 )
 
 const (
